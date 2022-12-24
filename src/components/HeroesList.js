@@ -1,21 +1,12 @@
-import { useState, useEffect } from 'react';
-import heroesAPI from '../services/heroesAPI';
-
-const HeroesList = () => {
-    const [heroes, setHeroes] = useState([]);
-
-    useEffect(() => {
-        const getAllHeroes = async () => {
-            const allHeroes = await heroesAPI.getHeroes();
-            if (allHeroes.length)
-                setHeroes(allHeroes);
-        }
-        getAllHeroes();
-    }, []);
-
+const HeroesList = ({heroes, setSelectedHero}) => {
     return (
-        <div>
-            {heroes.map(hero => <p>{hero.name}</p>)}
+        <div className='heroes-list-container'>
+            <ul>
+            {heroes.map(hero => 
+                <li key={hero.id} onClick={() => setSelectedHero(hero)}>
+                    {hero.name}
+                </li>)}
+            </ul>
         </div>
     );
 }
