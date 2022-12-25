@@ -1,12 +1,12 @@
+import '../assets/HeroesList.css';
+
 const HeroesList = ({heroes, setSelectedHero}) => {
     return (
         <div className='heroes-list-container'>
-            <ul>
             {heroes.map(hero => 
-                <li key={hero.id} onClick={() => setSelectedHero(hero)}>
+                <div className='heroes-list_name' key={hero.id} onClick={() => setSelectedHero(hero.id)}>
                     {hero.name}
-                </li>)}
-            </ul>
+                </div>)}
         </div>
     );
 }

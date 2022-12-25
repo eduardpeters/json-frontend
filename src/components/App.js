@@ -7,9 +7,9 @@ import HeroForm from './HeroForm';
 import Footer from './Footer';
 import '../assets/App.css';
 
-function App() {
+const App = () => {
     const [heroes, setHeroes] = useState([]);
-    const [selectedHero, setSelectedHero] = useState({});
+    const [selectedHero, setSelectedHero] = useState(0);
 
     useEffect(() => {
         const getAllHeroes = async () => {

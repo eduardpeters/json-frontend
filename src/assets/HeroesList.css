@@ -1,0 +1,14 @@
+.heroes-list-container {
+    display: flex;
+    flex-flow: row wrap;
+    width: 25%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.heroes-list_name {
+    cursor: pointer;
+    border: 1px solid black;
+    margin: 5px;
+    padding: 5px;
+}

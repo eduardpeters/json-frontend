@@ -1,11 +1,33 @@
+import { useState, useEffect } from 'react';
+import heroesAPI from '../services/heroesAPI';
+
 const DisplayHero = ({selectedHero, setSelectedHero}) => {
+    const [heroInfo, setHeroInfo] = useState({});
+
+    useEffect(() => {
+        const getHeroInfo = async () => {
+            const singleHero = await heroesAPI.getSingleHero(selectedHero);
+            if (singleHero.id)
+                setHeroInfo(singleHero);
+        }
+        if (selectedHero !== 0)
+            getHeroInfo();
+    },[selectedHero]);
+
     return (
         <>
-            {selectedHero.id ? 
+            {heroInfo.id ? 
         <div>
             Current selection:
-            {selectedHero.name}
-            <button onClick={() => setSelectedHero({})}>Close</button>
+            {heroInfo.name}
+            <button 
+                onClick={() => {
+                    setSelectedHero(0);
+                    setHeroInfo({});
+                }}
+            >
+                Close
+            </button>
         </div>
         :
         <div>
