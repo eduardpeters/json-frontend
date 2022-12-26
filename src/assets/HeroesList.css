@@ -8,8 +8,13 @@
 .heroes-list_name {
     cursor: pointer;
     border: 1px solid black;
+    border-radius: 5px;
     padding: 5px;
     color: #FFF;
+}
+
+.heroes-list_name:hover {
+    opacity: 0.7;
 }
 
 .marvel-hero {

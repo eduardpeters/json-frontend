@@ -1,3 +1,40 @@
 .hero-display {
     grid-area: hero-display;
+    padding: 1rem;
+}
+
+.hero-display_none {
+    font-weight: bold;
+}
+
+.hero-display_box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(6, auto);
+}
+
+.hero-display_box-name {
+    grid-column: span 2;
+}
+
+.hero-display_box > img {
+    grid-column: span 2;
+    height: 200px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-display_box-field {
+    text-align: center;
+}
+
+.hero-display_box-input {
+    text-align: justify;
+}
+
+.hero-display_box-btns {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
 }
