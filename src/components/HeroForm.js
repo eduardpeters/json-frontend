@@ -1,6 +1,8 @@
+import '../assets/HeroForm.css';
+
 const HeroForm = () => {
     return (
-        <div>
+        <div className='hero-form'>
             <button>Add a hero</button>
         </div>
     );

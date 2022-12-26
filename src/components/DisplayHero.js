@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import heroesAPI from '../services/heroesAPI';
+import '../assets/DisplayHero.css';
 
 const DisplayHero = ({selectedHero, setSelectedHero}) => {
     const [heroInfo, setHeroInfo] = useState({});
@@ -15,7 +16,7 @@ const DisplayHero = ({selectedHero, setSelectedHero}) => {
     },[selectedHero]);
 
     return (
-        <>
+        <div className='hero-display'>
             {heroInfo.id ? 
         <div>
             Current selection:
@@ -34,7 +35,7 @@ const DisplayHero = ({selectedHero, setSelectedHero}) => {
             Pick a hero from the list!
         </div>
             }
-        </>
+        </div>
     );
 }
 

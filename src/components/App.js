@@ -23,10 +23,8 @@ const App = () => {
     return (
         <div className='App'>
             <Header />
-            <div className='heroes-container'>
-                <HeroesList heroes={heroes} setSelectedHero={setSelectedHero} />
-                <DisplayHero selectedHero={selectedHero} setSelectedHero={setSelectedHero} />
-            </div>
+            <HeroesList heroes={heroes} setSelectedHero={setSelectedHero} />
+            <DisplayHero selectedHero={selectedHero} setSelectedHero={setSelectedHero} />
             <HeroForm />
             <Footer />
         </div>

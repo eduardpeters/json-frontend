@@ -1,11 +1,12 @@
 .App {
     text-align: center;
-}
-
-.heroes-container {
     display: grid;
-    gap: 2rem;
+    grid-template-areas: 
+    'head   head'
+    'hero-list  hero-display'
+    'form   form'
+    'foot   foot';
     grid-template-columns: 1fr 2fr;
-    grid-template-rows: auto;
-    padding: 0 1rem;
+    grid-template-rows: auto auto auto;
+    padding: 1rem;
 }
