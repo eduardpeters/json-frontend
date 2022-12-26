@@ -1,14 +1,21 @@
 .heroes-list-container {
-    display: flex;
-    flex-flow: row wrap;
-    width: 25%;
-    justify-content: space-around;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
 }
 
 .heroes-list_name {
     cursor: pointer;
     border: 1px solid black;
-    margin: 5px;
     padding: 5px;
+    color: #FFF;
+}
+
+
+.marvel-hero {
+    background-color: #ED1D24;
+}
+
+.dc-hero {
+    background-color: #0476F2;
 }
