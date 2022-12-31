@@ -1,23 +1,17 @@
 import { useState, useEffect } from 'react';
 import heroesAPI from '../services/heroesAPI';
+import PatchInput from './PatchInput';
 import '../assets/DisplayHero.css';
 
 const DisplayHero = ({selectedHero, setSelectedHero}) => {
     const [heroInfo, setHeroInfo] = useState({});
     const [toggleEdit, setToggleEdit] = useState(false);
-    const [alterInput, setAlterInput] = useState('');
-    const [firstApInput, setFirstApInput] = useState('');
-    const [characterInput, setCharacterInput] = useState('');
 
     useEffect(() => {
         const getHeroInfo = async () => {
             const singleHero = await heroesAPI.getSingleHero(selectedHero);
-            if (singleHero.id) {
+            if (singleHero.id)
                 setHeroInfo(singleHero);
-                setAlterInput(singleHero.alter_ego);
-                setFirstApInput(singleHero.first_appearance);
-                setCharacterInput(singleHero.characterInput);
-            }
         }
         if (selectedHero !== 0)
             getHeroInfo();
@@ -35,12 +29,11 @@ const DisplayHero = ({selectedHero, setSelectedHero}) => {
             <div className='hero-display_box'>
                 <h4 className='hero-display_box-name'>{heroInfo.name}</h4>
                 <img src={heroInfo.image} alt={`This is ${heroInfo.name}`}></img>
-                <p className='hero-display_box-field'>Alter Ego:</p>
-                <input className='hero-display_box-input'></input>
-                <p className='hero-display_box-field'>First Appearance:</p>
-                <input className='hero-display_box-input'></input>
-                <p className='hero-display_box-field'>Characters:</p>
-                <input className='hero-display_box-input'></input>
+                <div className='patch-input-container'>
+                    <PatchInput fieldName='Alter Ego' propertyName='alter_ego' entry={heroInfo} setEntry={setHeroInfo} />
+                    <PatchInput fieldName='First Appearance' propertyName='first_appearance' entry={heroInfo} setEntry={setHeroInfo} />
+                    <PatchInput fieldName='Characters' propertyName='characters' entry={heroInfo} setEntry={setHeroInfo} />
+                </div>
                 <div className='hero-display_box-btns'>
                     {toggleEdit ?
                         <div>

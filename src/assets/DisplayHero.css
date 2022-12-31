@@ -9,8 +9,8 @@
 
 .hero-display_box {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(6, auto);
+    grid-template-columns: auto;
+    grid-template-rows: repeat(4, auto);
 }
 
 .hero-display_box-name {
@@ -25,12 +25,8 @@
     margin-right: auto;
 }
 
-.hero-display_box-field {
-    text-align: center;
-}
-
-.hero-display_box-input {
-    text-align: justify;
+.patch-input-container {
+    grid-column: span 2;
 }
 
 .hero-display_box-btns {

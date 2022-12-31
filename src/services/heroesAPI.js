@@ -24,6 +24,18 @@ class heroesAPI {
             return ({});
         }
     }
+
+    static async updateSingleHero(id, reqBody) {
+        const URL = `${process.env.REACT_APP_BASE_URL}heroes/${id}`;
+        try {
+            const response = await axios.patch(URL, reqBody);
+            return response.data;
+        }
+        catch (error) {
+            console.error(error.message);
+            return ({});
+        }
+    }
 }
 
 export default heroesAPI;
