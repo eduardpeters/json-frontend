@@ -25,7 +25,7 @@ const App = () => {
             <Header />
             <HeroesList heroes={heroes} setSelectedHero={setSelectedHero} />
             <DisplayHero selectedHero={selectedHero} setSelectedHero={setSelectedHero} />
-            <HeroForm />
+            <HeroForm heroes={heroes} setHeroes={setHeroes} />
             <Footer />
         </div>
     );

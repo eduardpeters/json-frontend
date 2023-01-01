@@ -1,9 +1,21 @@
+import { useState } from 'react';
+import FormModal from './FormModal';
 import '../assets/HeroForm.css';
 
-const HeroForm = () => {
+const HeroForm = ({heroes, setHeroes}) => {
+    const [toggleForm, setToggleForm] = useState(false);
+
+    const handleToggleClicks = () => {
+        setToggleForm(!toggleForm);
+    }
+
     return (
         <div className='hero-form'>
-            <button>Add a hero</button>
+            {toggleForm ?
+            <FormModal handleToggleClicks={handleToggleClicks} heroes={heroes} setHeroes={setHeroes} />
+            :
+            <button onClick={handleToggleClicks}>Add a hero</button>
+            }
         </div>
     );
 }
