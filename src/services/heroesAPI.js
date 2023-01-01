@@ -37,6 +37,18 @@ class heroesAPI {
         }
     }
 
+    static async replaceHero(id, reqBody) {
+        const URL = `${process.env.REACT_APP_BASE_URL}heroes/${id}`;
+        try {
+            const response = await axios.put(URL, reqBody);
+            return response.data;
+        }
+        catch (error) {
+            console.error(error.message);
+            return ({});
+        }
+    }
+
     static async postHero(reqBody) {
         const URL = `${process.env.REACT_APP_BASE_URL}heroes/`;
         try {

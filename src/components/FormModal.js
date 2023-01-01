@@ -36,9 +36,12 @@ const FormModal = ({ handleToggleClicks, heroes, setHeroes, currentHero }) => {
     }
 
     const handleReplace = async () => {
-        const response = await heroesAPI.replaceHero(newHero);
-        if (response.id) {
-            setHeroes([...heroes, response]);
+        const response = await heroesAPI.replaceHero(currentHero.id, newHero);
+        const heroIndex = heroes.findIndex(hero => hero.id === currentHero.id);
+        if (heroIndex !== -1) {
+            const newHeroesArray = [...heroes];
+            newHeroesArray[heroIndex] = response;
+            setHeroes(newHeroesArray);
             handleToggleClicks();
         }
         else {
@@ -61,15 +64,15 @@ const FormModal = ({ handleToggleClicks, heroes, setHeroes, currentHero }) => {
             <div className='form-modal-container'>
                 <form className='form-modal-form' onSubmit={handleSubmit}>
                     <h3>{`${currentHero ? 'Update' : 'Create'} a hero`}</h3>
-                    <label>Name: <input type='text' name='name' onChange={handleChange} placeholder='Enter a name' minLength={3} required></input></label>
+                    <label>Name: <input type='text' name='name' value={newHero.name} onChange={handleChange} placeholder='Enter a name' minLength={3} required></input></label>
                     <div>
                         <label>Marvel:<input type='radio' name='publisher' onChange={handleChange} value='Marvel Comics' required></input></label>
                         <label>DC Comics:<input type='radio' name='publisher' onChange={handleChange} value='DC Comics' required></input></label>
                     </div>
-                    <label>Alter Ego: <input type='text' name='alter_ego' onChange={handleChange} placeholder='Enter the alter ego' minLength={3} required></input></label>
-                    <label>First Appearance: <input type='text' name='first_appearance' onChange={handleChange} placeholder='Enter the first appearance' minLength={3} required></input></label>
-                    <label>Image URL: <input type='url' name='image' onChange={handleChange} placeholder='https://www.example.com/img.jpg' minLength={3} required></input></label>
-                    <label>Characters: <input type='text' name='characters' onChange={handleChange} placeholder='Enter characters' minLength={3} required></input></label>
+                    <label>Alter Ego: <input type='text' name='alter_ego' value={newHero.alter_ego} onChange={handleChange} placeholder='Enter the alter ego' minLength={3} required></input></label>
+                    <label>First Appearance: <input type='text' name='first_appearance' value={newHero.first_appearance} onChange={handleChange} placeholder='Enter the first appearance' minLength={3} required></input></label>
+                    <label>Image URL: <input type='url' name='image' value={newHero.image} onChange={handleChange} placeholder='https://www.example.com/img.jpg' minLength={3} required></input></label>
+                    <label>Characters: <input type='text' name='characters' value={newHero.characters} onChange={handleChange} placeholder='Enter characters' minLength={3} required></input></label>
                     <input type='submit'></input>
                     <button 
                     onClick={event => {
