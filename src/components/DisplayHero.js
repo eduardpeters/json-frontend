@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
 import heroesAPI from '../services/heroesAPI';
 import PatchInput from './PatchInput';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import CloseIcon from '@mui/icons-material/Close';
 import '../assets/DisplayHero.css';
 
-const DisplayHero = ({selectedHero, setSelectedHero}) => {
+const DisplayHero = ({ selectedHero, setSelectedHero, heroes, setHeroes }) => {
     const [heroInfo, setHeroInfo] = useState({});
     const [toggleEdit, setToggleEdit] = useState(false);
 
@@ -23,6 +26,17 @@ const DisplayHero = ({selectedHero, setSelectedHero}) => {
         setToggleEdit(false);
     }
 
+    const handleDelete = async () => {
+        const response = await heroesAPI.deleteHero(selectedHero);
+        if (response === 204) {
+            setHeroes(heroes.filter(hero => hero.id !== selectedHero));
+            handleClose();
+        }
+        else {
+            alert('Unable to delete hero');
+        }
+    }
+
     return (
         <div className='hero-display'>
             {heroInfo.id ? 
@@ -36,16 +50,12 @@ const DisplayHero = ({selectedHero, setSelectedHero}) => {
                 </div>
                 <div className='hero-display_box-btns'>
                     {toggleEdit ?
-                        <div>
-                            <button className='hero-display_box-confirm'>Confirm</button>
-                            <button className='hero-display_box-discard'>Discard</button>
-                        </div>
+                        <CloseIcon onClick={() => setToggleEdit(!toggleEdit)} />
                     :
-                        <button className='hero-display_box-edit' onClick={() => setToggleEdit(!toggleEdit)}>Edit</button>
+                        <EditIcon onClick={() => setToggleEdit(!toggleEdit)} />
                     }
-                    
-                    <button className='hero-display_box-delete'>Delete</button>
-                    <button className='hero-display_box-close' onClick={handleClose}>Close</button>
+                    <CloseIcon onClick={handleClose} />
+                    <DeleteForeverIcon onClick={handleDelete} />
                 </div>
             </div>
             :

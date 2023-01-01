@@ -34,3 +34,15 @@
     display: grid;
     grid-template-columns: repeat(3, auto);
 }
+
+.hero-display_box-btns > svg {
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 2rem;
+}
+
+.hero-display_box-btns > svg:hover {
+    transform: scale(1.25);
+    color: black;
+}

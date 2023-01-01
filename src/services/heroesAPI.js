@@ -48,6 +48,18 @@ class heroesAPI {
             return ({});
         }
     }
+
+    static async deleteHero(id) {
+        const URL = `${process.env.REACT_APP_BASE_URL}heroes/${id}`;
+        try {
+            const response = await axios.delete(URL);
+            return response.status;
+        }
+        catch (error) {
+            console.error(error.message);
+            return ({});
+        }
+    }
 }
 
 export default heroesAPI;
