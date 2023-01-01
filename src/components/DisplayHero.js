@@ -5,6 +5,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import CloseIcon from '@mui/icons-material/Close';
 import '../assets/DisplayHero.css';
+import FormModal from './FormModal';
 
 const DisplayHero = ({ selectedHero, setSelectedHero, heroes, setHeroes }) => {
     const [heroInfo, setHeroInfo] = useState({});
@@ -49,11 +50,10 @@ const DisplayHero = ({ selectedHero, setSelectedHero, heroes, setHeroes }) => {
                     <PatchInput fieldName='Characters' propertyName='characters' entry={heroInfo} setEntry={setHeroInfo} />
                 </div>
                 <div className='hero-display_box-btns'>
-                    {toggleEdit ?
-                        <CloseIcon onClick={() => setToggleEdit(!toggleEdit)} />
-                    :
-                        <EditIcon onClick={() => setToggleEdit(!toggleEdit)} />
+                    {toggleEdit &&
+                        <FormModal handleToggleClicks={() => setToggleEdit(!toggleEdit)} />
                     }
+                    <EditIcon onClick={() => setToggleEdit(!toggleEdit)} />
                     <CloseIcon onClick={handleClose} />
                     <DeleteForeverIcon onClick={handleDelete} />
                 </div>

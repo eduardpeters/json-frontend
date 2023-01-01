@@ -24,8 +24,7 @@ const FormModal = ({ handleToggleClicks, heroes, setHeroes, currentHero }) => {
         setNewHero(newObject);
     }
 
-    const handleSubmit = async event => {
-        event.preventDefault();
+    const handlePost = async () => {
         const response = await heroesAPI.postHero(newHero);
         if (response.id) {
             setHeroes([...heroes, response]);
@@ -36,11 +35,32 @@ const FormModal = ({ handleToggleClicks, heroes, setHeroes, currentHero }) => {
         }
     }
 
+    const handleReplace = async () => {
+        const response = await heroesAPI.replaceHero(newHero);
+        if (response.id) {
+            setHeroes([...heroes, response]);
+            handleToggleClicks();
+        }
+        else {
+            alert('Unable to replace the hero');
+        }
+    }
+
+    const handleSubmit = async event => {
+        event.preventDefault();
+        if (currentHero) {
+            handleReplace();
+        }
+        else {
+            handlePost();
+        }
+    }
+
     return (
         <div className='form-modal' onClick={handleOutsideClicks}>
             <div className='form-modal-container'>
                 <form className='form-modal-form' onSubmit={handleSubmit}>
-                    <h3>Add a new hero</h3>
+                    <h3>{`${currentHero ? 'Update' : 'Create'} a hero`}</h3>
                     <label>Name: <input type='text' name='name' onChange={handleChange} placeholder='Enter a name' minLength={3} required></input></label>
                     <div>
                         <label>Marvel:<input type='radio' name='publisher' onChange={handleChange} value='Marvel Comics' required></input></label>
