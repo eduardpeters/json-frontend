@@ -73,12 +73,14 @@ const FormModal = ({ handleToggleClicks, heroes, setHeroes, currentHero }) => {
                     <label>First Appearance: <input type='text' name='first_appearance' value={newHero.first_appearance} onChange={handleChange} placeholder='Enter the first appearance' minLength={3} required></input></label>
                     <label>Image URL: <input type='url' name='image' value={newHero.image} onChange={handleChange} placeholder='https://www.example.com/img.jpg' minLength={3} required></input></label>
                     <label>Characters: <input type='text' name='characters' value={newHero.characters} onChange={handleChange} placeholder='Enter characters' minLength={3} required></input></label>
-                    <input type='submit'></input>
-                    <button 
-                    onClick={event => {
-                        event.preventDefault();
-                        handleToggleClicks();
-                    }}>Close this</button>
+                    <div className='form-modal-btns'>
+                        <button className='form-input-ok' type='submit'>Submit</button>
+                        <button 
+                        onClick={event => {
+                            event.preventDefault();
+                            handleToggleClicks();
+                        }}>Discard</button>
+                    </div>
                 </form>
             </div>
         </div>
