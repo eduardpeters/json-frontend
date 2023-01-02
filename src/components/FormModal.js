@@ -6,7 +6,7 @@ const FormModal = ({ handleToggleClicks, heroes, setHeroes, currentHero, setCurr
     const [newHero, setNewHero] = useState(currentHero ||
         {
             name: '',
-            publisher: 'Marvel',
+            publisher: 'Marvel Comics',
             alter_ego: '',
             first_appearance: '',
             image: '',
@@ -68,8 +68,8 @@ const FormModal = ({ handleToggleClicks, heroes, setHeroes, currentHero, setCurr
                     <label htmlFor='name'>Name</label>
                     <input type='text' id='name' name='name' value={newHero.name} onChange={handleChange} placeholder='Hero name?' minLength={3} required></input>
                     <div className='form-modal-radio_input'>
-                        <label>Marvel:<input type='radio' name='publisher' onChange={handleChange} value='Marvel Comics' required></input></label>
-                        <label>DC Comics:<input type='radio' name='publisher' onChange={handleChange} value='DC Comics' required></input></label>
+                        <label>Marvel:<input type='radio' name='publisher' onChange={handleChange} value='Marvel Comics' checked={newHero.publisher === 'Marvel Comics'} required></input></label>
+                        <label>DC Comics:<input type='radio' name='publisher' onChange={handleChange} value='DC Comics' checked={newHero.publisher === 'DC Comics'} required></input></label>
                     </div>
                     <label htmlFor='alter_ego'>Alter Ego</label>
                     <input type='text' id='alter_ego' name='alter_ego' value={newHero.alter_ego} onChange={handleChange} placeholder='Real identity?' minLength={3} required></input>
