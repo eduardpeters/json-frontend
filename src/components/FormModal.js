@@ -64,15 +64,20 @@ const FormModal = ({ handleToggleClicks, heroes, setHeroes, currentHero }) => {
             <div className='form-modal-container'>
                 <form className='form-modal-form' onSubmit={handleSubmit}>
                     <h3>{`${currentHero ? 'Update' : 'Create'} a hero`}</h3>
-                    <label>Name: <input type='text' name='name' value={newHero.name} onChange={handleChange} placeholder='Enter a name' minLength={3} required></input></label>
-                    <div>
+                    <label for='name'>Name</label>
+                    <input type='text' id='name' name='name' value={newHero.name} onChange={handleChange} placeholder='Hero name?' minLength={3} required></input>
+                    <div className='form-modal-radio_input'>
                         <label>Marvel:<input type='radio' name='publisher' onChange={handleChange} value='Marvel Comics' required></input></label>
                         <label>DC Comics:<input type='radio' name='publisher' onChange={handleChange} value='DC Comics' required></input></label>
                     </div>
-                    <label>Alter Ego: <input type='text' name='alter_ego' value={newHero.alter_ego} onChange={handleChange} placeholder='Enter the alter ego' minLength={3} required></input></label>
-                    <label>First Appearance: <input type='text' name='first_appearance' value={newHero.first_appearance} onChange={handleChange} placeholder='Enter the first appearance' minLength={3} required></input></label>
-                    <label>Image URL: <input type='url' name='image' value={newHero.image} onChange={handleChange} placeholder='https://www.example.com/img.jpg' minLength={3} required></input></label>
-                    <label>Characters: <input type='text' name='characters' value={newHero.characters} onChange={handleChange} placeholder='Enter characters' minLength={3} required></input></label>
+                    <label for='alter_ego'>Alter Ego</label>
+                    <input type='text' id='alter_ego' name='alter_ego' value={newHero.alter_ego} onChange={handleChange} placeholder='Real identity?' minLength={3} required></input>
+                    <label for='first_appearance'>First Appearance</label>
+                    <input type='text' id='first_appearance' name='first_appearance' value={newHero.first_appearance} onChange={handleChange} placeholder='First issue?' minLength={3} required></input>
+                    <label for='image'>Image URL</label>
+                    <input type='url' id='image' name='image' value={newHero.image} onChange={handleChange} placeholder='Link to image...' minLength={3} required></input>
+                    <label for='characters'>Characters:</label>
+                    <input type='text' id='characters' name='characters' value={newHero.characters} onChange={handleChange} placeholder='Characters?' minLength={3} required></input>
                     <div className='form-modal-btns'>
                         <button className='form-input-ok' type='submit'>Submit</button>
                         <button 

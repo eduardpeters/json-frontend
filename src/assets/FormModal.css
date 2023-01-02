@@ -1,5 +1,5 @@
 .form-modal {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     height: 100vh;
@@ -10,7 +10,7 @@
 .form-modal-container {
     box-shadow: 5px 5px #00000044;
     background-color: #FFF;
-    width: 50vw;
+    width: 30vw;
     margin-top: 10%;
     margin-left: auto;
     margin-right: auto;
@@ -19,7 +19,18 @@
 
 .form-modal-form {
     display: grid;
-    gap: 5px;
+    gap: 0.5rem;
+    text-align: center;
+}
+
+.form-modal-form > input {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-modal-radio_input > label {
+    margin: 0 1rem;
 }
 
 .form-modal-btns > button {
