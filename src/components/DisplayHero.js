@@ -51,7 +51,7 @@ const DisplayHero = ({ selectedHero, setSelectedHero, heroes, setHeroes }) => {
                 </div>
                 <div className='hero-display_box-btns'>
                     {toggleEdit &&
-                        <FormModal handleToggleClicks={() => setToggleEdit(!toggleEdit)} heroes={heroes} setHeroes={setHeroes} currentHero={heroInfo} />
+                        <FormModal handleToggleClicks={() => setToggleEdit(!toggleEdit)} heroes={heroes} setHeroes={setHeroes} currentHero={heroInfo} setCurrentHero={setHeroInfo} />
                     }
                     <EditIcon onClick={() => setToggleEdit(!toggleEdit)} />
                     <CloseIcon onClick={handleClose} />
