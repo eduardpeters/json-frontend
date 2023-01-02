@@ -64,7 +64,7 @@ const FormModal = ({ handleToggleClicks, heroes, setHeroes, currentHero, setCurr
         <div className='form-modal' onClick={handleOutsideClicks}>
             <div className='form-modal-container'>
                 <form className='form-modal-form' onSubmit={handleSubmit}>
-                    <h3>{`${currentHero ? 'Update' : 'Create'} a hero`}</h3>
+                    <h3>{`${currentHero ? 'Update' : 'Create'} hero`}</h3>
                     <label htmlFor='name'>Name</label>
                     <input type='text' id='name' name='name' value={newHero.name} onChange={handleChange} placeholder='Hero name?' minLength={3} required></input>
                     <div className='form-modal-radio_input'>

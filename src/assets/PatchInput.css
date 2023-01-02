@@ -7,6 +7,8 @@
 .patch-input-label {
     text-align: right;
     margin-right: 5px;
+    font-size: small;
+    padding: 0.25rem;
 }
 
 .patch-input-input {
@@ -23,6 +25,12 @@
 
 .patch-input-btns > svg {
     cursor: pointer;
+    color: #808080;
+}
+
+.patch-input-btns > svg:hover {
+    transform: scale(1.25);
+    color: #000;
 }
 
 .patch-input-btns > button {

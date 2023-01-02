@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import heroesAPI from '../services/heroesAPI';
 import PatchInput from './PatchInput';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import CloseIcon from '@mui/icons-material/Close';
@@ -42,7 +43,10 @@ const DisplayHero = ({ selectedHero, setSelectedHero, heroes, setHeroes }) => {
         <div className='hero-display'>
             {heroInfo.id ? 
             <div className='hero-display_box'>
-                <h4 className='hero-display_box-name'>{heroInfo.name}</h4>
+                <div className='hero-display_box-name'>
+                    <h4>{heroInfo.name}</h4>
+                    <AccountCircleIcon className={`hero-icon ${heroInfo.publisher === 'Marvel Comics' ? 'hero-icon-marvel' : 'hero-icon-dc'}`} />
+                </div>
                 <img src={heroInfo.image} alt={`This is ${heroInfo.name}`}></img>
                 <div className='patch-input-container'>
                     <PatchInput fieldName='Alter Ego' propertyName='alter_ego' entry={heroInfo} setEntry={setHeroInfo} />
