@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import heroesAPI from '../services/heroesAPI';
 import PatchInput from './PatchInput';
+import FormModal from './FormModal';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import CloseIcon from '@mui/icons-material/Close';
 import '../assets/DisplayHero.css';
-import FormModal from './FormModal';
 
 const DisplayHero = ({ selectedHero, setSelectedHero, heroes, setHeroes }) => {
     const [heroInfo, setHeroInfo] = useState({});
@@ -49,9 +49,9 @@ const DisplayHero = ({ selectedHero, setSelectedHero, heroes, setHeroes }) => {
                 </div>
                 <img src={heroInfo.image} alt={`This is ${heroInfo.name}`}></img>
                 <div className='patch-input-container'>
-                    <PatchInput fieldName='Alter Ego' propertyName='alter_ego' entry={heroInfo} setEntry={setHeroInfo} />
-                    <PatchInput fieldName='First Appearance' propertyName='first_appearance' entry={heroInfo} setEntry={setHeroInfo} />
-                    <PatchInput fieldName='Characters' propertyName='characters' entry={heroInfo} setEntry={setHeroInfo} />
+                    <PatchInput key={`${selectedHero}-alter_ego`} fieldName='Alter Ego' propertyName='alter_ego' entry={heroInfo} setEntry={setHeroInfo} />
+                    <PatchInput key={`${selectedHero}-first_appearance`} fieldName='First Appearance' propertyName='first_appearance' entry={heroInfo} setEntry={setHeroInfo} />
+                    <PatchInput key={`${selectedHero}-characters`} fieldName='Characters' propertyName='characters' entry={heroInfo} setEntry={setHeroInfo} />
                 </div>
                 <div className='hero-display_box-btns'>
                     {toggleEdit &&
