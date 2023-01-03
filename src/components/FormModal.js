@@ -24,6 +24,11 @@ const FormModal = ({ handleToggleClicks, heroes, setHeroes, currentHero, setCurr
         setNewHero(newObject);
     }
 
+    const validateFields = () => {
+        const properties = Object.values(newHero);
+        return (properties.every(property => property));
+    }
+
     const handlePost = async () => {
         const response = await heroesAPI.postHero(newHero);
         if (response.id) {
@@ -37,7 +42,7 @@ const FormModal = ({ handleToggleClicks, heroes, setHeroes, currentHero, setCurr
 
     const handleReplace = async () => {
         const response = await heroesAPI.replaceHero(currentHero.id, newHero);
-        const heroIndex = heroes.findIndex(hero => hero.id === currentHero.id);
+        const heroIndex = heroes.findIndex(hero => hero.id === response.id);
         if (heroIndex !== -1) {
             const newHeroesArray = [...heroes];
             newHeroesArray[heroIndex] = response;
@@ -50,9 +55,12 @@ const FormModal = ({ handleToggleClicks, heroes, setHeroes, currentHero, setCurr
         }
     }
 
-    const handleSubmit = async event => {
+    const handleSubmit = event => {
         event.preventDefault();
-        if (currentHero) {
+        if (!validateFields()) {
+            alert('Fields are missing values');
+        }
+        else if (currentHero) {
             handleReplace();
         }
         else {
@@ -78,7 +86,7 @@ const FormModal = ({ handleToggleClicks, heroes, setHeroes, currentHero, setCurr
                     <label htmlFor='image'>Image URL</label>
                     <input type='url' id='image' name='image' value={newHero.image} onChange={handleChange} placeholder='Link to image...' minLength={3} required></input>
                     <label htmlFor='characters'>Characters:</label>
-                    <input type='text' id='characters' name='characters' value={newHero.characters} onChange={handleChange} placeholder='Characters?' minLength={3} required></input>
+                    <input type='text' id='characters' name='characters' value={newHero.characters} onChange={handleChange} placeholder='Characters?' minLength={3} ></input>
                     <div className='form-modal-btns'>
                         <button className='form-input-ok' type='submit'>Submit</button>
                         <button 
@@ -92,4 +100,5 @@ const FormModal = ({ handleToggleClicks, heroes, setHeroes, currentHero, setCurr
         </div>
     );
 }
+
 export default FormModal;
