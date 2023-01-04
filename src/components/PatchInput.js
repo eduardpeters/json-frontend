@@ -13,8 +13,8 @@ const PatchInput = ({ fieldName, propertyName, entry, setEntry }) => {
     }, [entry]);
 
     const handleOkClick = async () => {
-        if (newValue.length < 3) {
-            alert('New value must be a string of at least 3 characters');
+        if (newValue.length < 2) {
+            alert('New value must be a string of at least 2 characters');
             return;
         }
         const patchedEntry = await heroesAPI.updateSingleHero(entry.id, { [propertyName]: newValue });
@@ -35,18 +35,18 @@ const PatchInput = ({ fieldName, propertyName, entry, setEntry }) => {
 
     return (
         <div className='patch-input'>
-            <label className='patch-input-label'>{`${fieldName}:`}</label>
-            <input className={`patch-input-input ${toggleEdit && 'patch-input-input_enabled'}`}
+            <label className='patch-input__label'>{`${fieldName}:`}</label>
+            <input className={`patch-input__input ${toggleEdit && 'patch-input__input--enabled'}`}
                 value={newValue}
                 onChange={e => setNewValue(e.target.value)}
                 disabled={toggleEdit ? false : true}
             >
             </input>
-            <div className='patch-input-btns'>
+            <div className='patch-input__btns'>
             {toggleEdit ?
                 <>
-                    <button className='patch-input-ok' onClick={handleOkClick}>OK</button>
-                    <button className='patch-input-cancel' onClick={handleCancelClick}>Cancel</button>
+                    <button className='patch-input__btns--ok' onClick={handleOkClick}>OK</button>
+                    <button className='patch-input__btns--cancel' onClick={handleCancelClick}>Cancel</button>
                 </>
                 :
                     <EditIcon fontSize='small' onClick={() => setToggleEdit(!toggleEdit)} />

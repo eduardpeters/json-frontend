@@ -3,24 +3,24 @@
     padding: 1rem;
 }
 
-.hero-display_none {
+.hero-display__none {
     font-weight: bold;
     padding: 25%;
 }
 
-.hero-display_box {
+.hero-display__box {
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: repeat(4, auto);
 }
 
-.hero-display_box-name {
+.hero-display__name {
     grid-column: span 2;
     font-size: larger;
     margin: 1rem 1rem;
 }
 
-.hero-display_box-name > h4 {
+.hero-display__name > h4 {
     display: inline;
 }
 
@@ -28,15 +28,15 @@
     margin: 0 1rem
 }
 
-.hero-icon-marvel {
+.hero-icon--marvel {
     color:  #ED1D24;
 }
 
-.hero-icon-dc {
+.hero-icon--dc {
     color:  #0476F2;
 }
 
-.hero-display_box > img {
+.hero-display__box > img {
     grid-column: span 2;
     height: 200px;
     width: 200px;
@@ -48,14 +48,14 @@
     grid-column: span 2;
 }
 
-.hero-display_box-btns {
+.hero-display__btns {
     grid-column: span 2;
     display: grid;
     grid-template-columns: repeat(3, auto);
     margin: 1rem 0 0 0;
 }
 
-.hero-display_box-btns > svg {
+.hero-display__btns > svg {
     cursor: pointer;
     margin-left: auto;
     margin-right: auto;
@@ -63,7 +63,7 @@
     color: #808080;
 }
 
-.hero-display_box-btns > svg:hover {
+.hero-display__btns > svg:hover {
     transform: scale(1.25);
     color: #000;
 }

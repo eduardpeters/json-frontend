@@ -4,14 +4,14 @@
     padding: 5px;
 }
 
-.patch-input-label {
+.patch-input__label {
     text-align: right;
     margin-right: 5px;
     font-size: small;
     padding: 0.25rem;
 }
 
-.patch-input-input {
+.patch-input__input {
     text-align: center;
     border: 1px solid transparent;
     background-color: #FFF;
@@ -19,21 +19,21 @@
     height: 1.5rem;
 }
 
-.patch-input-input_enabled {
+.patch-input__input--enabled {
     border: 1px solid lightgrey;
 }
 
-.patch-input-btns > svg {
+.patch-input__btns > svg {
     cursor: pointer;
     color: #808080;
 }
 
-.patch-input-btns > svg:hover {
+.patch-input__btns > svg:hover {
     transform: scale(1.25);
     color: #000;
 }
 
-.patch-input-btns > button {
+.patch-input__btns > button {
     border: none;
     border-radius: 5px;
     margin: 0 5px;
@@ -41,10 +41,10 @@
     height: 1.5rem;
 }
 
-.patch-input-btns > button:hover {
+.patch-input__btns > button:hover {
     opacity: 0.7;
 }
 
-.patch-input-ok {
+.patch-input__btns--ok {
     background-color: #90ee90;
 }

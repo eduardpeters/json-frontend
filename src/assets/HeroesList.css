@@ -1,4 +1,4 @@
-.heroes-list-container {
+.heroes-list {
     grid-area: hero-list;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -6,7 +6,7 @@
     font-size: small;
 }
 
-.heroes-list_name {
+.heroes-list__name {
     cursor: pointer;
     border: 1px solid black;
     border-radius: 5px;
@@ -14,7 +14,7 @@
     color: #FFF;
 }
 
-.heroes-list_name:hover {
+.heroes-list__name:hover {
     opacity: 0.7;
 }
 

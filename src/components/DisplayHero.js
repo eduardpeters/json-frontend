@@ -42,10 +42,10 @@ const DisplayHero = ({ selectedHero, setSelectedHero, heroes, setHeroes }) => {
     return (
         <div className='hero-display'>
             {heroInfo.id ? 
-            <div className='hero-display_box'>
-                <div className='hero-display_box-name'>
+            <div className='hero-display__box'>
+                <div className='hero-display__name'>
                     <h4>{heroInfo.name}</h4>
-                    <AccountCircleIcon className={`hero-icon ${heroInfo.publisher === 'Marvel Comics' ? 'hero-icon-marvel' : 'hero-icon-dc'}`} />
+                    <AccountCircleIcon className={`hero-icon ${heroInfo.publisher === 'Marvel Comics' ? 'hero-icon--marvel' : 'hero-icon--dc'}`} />
                 </div>
                 <img src={heroInfo.image} alt={`This is ${heroInfo.name}`}></img>
                 <div className='patch-input-container'>
@@ -53,7 +53,7 @@ const DisplayHero = ({ selectedHero, setSelectedHero, heroes, setHeroes }) => {
                     <PatchInput key={`${selectedHero}-first_appearance`} fieldName='First Appearance' propertyName='first_appearance' entry={heroInfo} setEntry={setHeroInfo} />
                     <PatchInput key={`${selectedHero}-characters`} fieldName='Characters' propertyName='characters' entry={heroInfo} setEntry={setHeroInfo} />
                 </div>
-                <div className='hero-display_box-btns'>
+                <div className='hero-display__btns'>
                     {toggleEdit &&
                         <FormModal handleToggleClicks={() => setToggleEdit(!toggleEdit)} heroes={heroes} setHeroes={setHeroes} currentHero={heroInfo} setCurrentHero={setHeroInfo} />
                     }
@@ -63,7 +63,7 @@ const DisplayHero = ({ selectedHero, setSelectedHero, heroes, setHeroes }) => {
                 </div>
             </div>
             :
-            <div className='hero-display_none'>
+            <div className='hero-display__none'>
                 <h4>Pick a hero from the list!</h4>
             </div>
             }

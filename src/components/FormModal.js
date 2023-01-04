@@ -69,9 +69,9 @@ const FormModal = ({ handleToggleClicks, heroes, setHeroes, currentHero, setCurr
     }
 
     return (
-        <div className='form-modal' onClick={handleOutsideClicks}>
-            <div className='form-modal-container'>
-                <form className='form-modal-form' onSubmit={handleSubmit}>
+        <div className='form-modal__background' onClick={handleOutsideClicks}>
+            <div className='form-modal__container'>
+                <form className='form-modal__form' onSubmit={handleSubmit}>
                     <h3>{`${currentHero ? 'Update' : 'Create'} hero`}</h3>
                     <label htmlFor='name'>Name</label>
                     <input type='text' id='name' name='name' value={newHero.name} onChange={handleChange} placeholder='Hero name?' minLength={3} required></input>
@@ -87,8 +87,8 @@ const FormModal = ({ handleToggleClicks, heroes, setHeroes, currentHero, setCurr
                     <input type='url' id='image' name='image' value={newHero.image} onChange={handleChange} placeholder='Link to image...' minLength={3} required></input>
                     <label htmlFor='characters'>Characters:</label>
                     <input type='text' id='characters' name='characters' value={newHero.characters} onChange={handleChange} placeholder='Characters?' minLength={3} ></input>
-                    <div className='form-modal-btns'>
-                        <button className='form-input-ok' type='submit'>Submit</button>
+                    <div className='form-modal__btns'>
+                        <button className='btns--ok' type='submit'>Submit</button>
                         <button 
                         onClick={event => {
                             event.preventDefault();
