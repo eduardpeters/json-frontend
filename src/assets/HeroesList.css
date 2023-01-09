@@ -6,6 +6,10 @@
     font-size: small;
 }
 
+.heroes-list > a {
+    text-decoration: none;
+}
+
 .heroes-list__name {
     cursor: pointer;
     border: 1px solid black;
