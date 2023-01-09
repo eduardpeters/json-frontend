@@ -11,7 +11,7 @@ const PatchInput = ({ fieldName, propertyName, entry, setEntry }) => {
     useEffect(() => {
         if (entry[propertyName])
             setNewValue(entry[propertyName]);
-    }, [entry]);
+    }, [entry, propertyName]);
 
     const handleOkClick = async () => {
         if (newValue.length < 2) {

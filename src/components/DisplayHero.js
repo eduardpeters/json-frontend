@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useOutletContext, useParams, useNavigate } from 'react-router-dom';
 import heroesAPI from '../services/heroesAPI';
 import PatchInput from './PatchInput';
 import FormModal from './FormModal';
@@ -9,7 +9,8 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import CloseIcon from '@mui/icons-material/Close';
 import '../assets/DisplayHero.css';
 
-const DisplayHero = ({ params, heroes, setHeroes }) => {
+const DisplayHero = () => {
+    const [heroes, setHeroes] = useOutletContext();
     const [heroInfo, setHeroInfo] = useState({});
     const [toggleEdit, setToggleEdit] = useState(false);
     const { heroId } = useParams();
@@ -33,7 +34,8 @@ const DisplayHero = ({ params, heroes, setHeroes }) => {
     const handleDelete = async () => {
         const response = await heroesAPI.deleteHero(heroId);
         if (response === 204) {
-            setHeroes(heroes.filter(hero => hero.id !== heroId));
+            const numberId = parseInt(heroId);
+            setHeroes(heroes.filter(hero => hero.id !== numberId));
             handleClose();
         }
         else {
