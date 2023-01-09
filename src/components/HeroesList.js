@@ -1,15 +1,17 @@
+import { Link } from 'react-router-dom';
 import '../assets/HeroesList.css';
 
-const HeroesList = ({heroes, setSelectedHero}) => {
+const HeroesList = ({ heroes }) => {
     return (
         <div className='heroes-list'>
             {heroes.map(hero => 
-                <div 
-                    className={`heroes-list__name ${hero.publisher === 'Marvel Comics' ? 'marvel-hero' : 'dc-hero'}`}
-                    key={hero.id} onClick={() => setSelectedHero(hero.id)}
-                >
-                    {hero.name}
-                </div>)}
+                <Link to={`/hero/${hero.id}`} key={hero.id}>
+                    <div 
+                        className={`heroes-list__name ${hero.publisher === 'Marvel Comics' ? 'marvel-hero' : 'dc-hero'}`}
+                    >
+                        {hero.name}
+                    </div>
+                </Link>)}
         </div>
     );
 }

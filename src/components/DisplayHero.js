@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useOutletContext, useParams, useNavigate } from 'react-router-dom';
 import heroesAPI from '../services/heroesAPI';
 import PatchInput from './PatchInput';
 import FormModal from './FormModal';
@@ -8,30 +9,33 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import CloseIcon from '@mui/icons-material/Close';
 import '../assets/DisplayHero.css';
 
-const DisplayHero = ({ selectedHero, setSelectedHero, heroes, setHeroes }) => {
+const DisplayHero = () => {
+    const [heroes, setHeroes] = useOutletContext();
     const [heroInfo, setHeroInfo] = useState({});
     const [toggleEdit, setToggleEdit] = useState(false);
+    const { heroId } = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getHeroInfo = async () => {
-            const singleHero = await heroesAPI.getSingleHero(selectedHero);
+            const singleHero = await heroesAPI.getSingleHero(heroId);
             if (singleHero.id)
                 setHeroInfo(singleHero);
         }
-        if (selectedHero !== 0)
-            getHeroInfo();
-    },[selectedHero]);
+        getHeroInfo();
+    },[heroId]);
 
     const handleClose = () => {
-        setSelectedHero(0);
         setHeroInfo({});
         setToggleEdit(false);
+        navigate('/');
     }
 
     const handleDelete = async () => {
-        const response = await heroesAPI.deleteHero(selectedHero);
+        const response = await heroesAPI.deleteHero(heroId);
         if (response === 204) {
-            setHeroes(heroes.filter(hero => hero.id !== selectedHero));
+            const numberId = parseInt(heroId);
+            setHeroes(heroes.filter(hero => hero.id !== numberId));
             handleClose();
         }
         else {
@@ -41,7 +45,6 @@ const DisplayHero = ({ selectedHero, setSelectedHero, heroes, setHeroes }) => {
 
     return (
         <div className='hero-display'>
-            {heroInfo.id ? 
             <div className='hero-display__box'>
                 <div className='hero-display__name'>
                     <h4>{heroInfo.name}</h4>
@@ -49,9 +52,9 @@ const DisplayHero = ({ selectedHero, setSelectedHero, heroes, setHeroes }) => {
                 </div>
                 <img src={heroInfo.image} alt={`This is ${heroInfo.name}`}></img>
                 <div className='patch-input-container'>
-                    <PatchInput key={`${selectedHero}-alter_ego`} fieldName='Alter Ego' propertyName='alter_ego' entry={heroInfo} setEntry={setHeroInfo} />
-                    <PatchInput key={`${selectedHero}-first_appearance`} fieldName='First Appearance' propertyName='first_appearance' entry={heroInfo} setEntry={setHeroInfo} />
-                    <PatchInput key={`${selectedHero}-characters`} fieldName='Characters' propertyName='characters' entry={heroInfo} setEntry={setHeroInfo} />
+                    <PatchInput key={`${heroId}-alter_ego`} fieldName='Alter Ego' propertyName='alter_ego' entry={heroInfo} setEntry={setHeroInfo} />
+                    <PatchInput key={`${heroId}-first_appearance`} fieldName='First Appearance' propertyName='first_appearance' entry={heroInfo} setEntry={setHeroInfo} />
+                    <PatchInput key={`${heroId}-characters`} fieldName='Characters' propertyName='characters' entry={heroInfo} setEntry={setHeroInfo} />
                 </div>
                 <div className='hero-display__btns'>
                     {toggleEdit &&
@@ -62,11 +65,6 @@ const DisplayHero = ({ selectedHero, setSelectedHero, heroes, setHeroes }) => {
                     <DeleteForeverIcon onClick={handleDelete} />
                 </div>
             </div>
-            :
-            <div className='hero-display__none'>
-                <h4>Pick a hero from the list!</h4>
-            </div>
-            }
         </div>
     );
 }

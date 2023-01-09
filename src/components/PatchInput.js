@@ -5,12 +5,13 @@ import '../assets/PatchInput.css';
 
 const PatchInput = ({ fieldName, propertyName, entry, setEntry }) => {
     let originalValue = entry[propertyName];
-    const [newValue, setNewValue] = useState(originalValue);
+    const [newValue, setNewValue] = useState('');
     const [toggleEdit, setToggleEdit] = useState(false);
     
     useEffect(() => {
-        setNewValue(entry[propertyName]);
-    }, [entry]);
+        if (entry[propertyName])
+            setNewValue(entry[propertyName]);
+    }, [entry, propertyName]);
 
     const handleOkClick = async () => {
         if (newValue.length < 2) {
