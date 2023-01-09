@@ -65,5 +65,12 @@
 
 .hero-display__btns > svg:hover {
     transform: scale(1.25);
+}
+
+.btns:hover {
     color: #000;
+}
+
+.btns--delete:hover {
+    color: #ff0000;
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useOutletContext, useParams, useNavigate } from 'react-router-dom';
+import { useLoaderData,useOutletContext, useParams, useNavigate } from 'react-router-dom';
 import heroesAPI from '../services/heroesAPI';
 import PatchInput from './PatchInput';
 import FormModal from './FormModal';
@@ -10,6 +10,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import '../assets/DisplayHero.css';
 
 const DisplayHero = () => {
+    const loadedHero = useLoaderData();
     const [heroes, setHeroes] = useOutletContext();
     const [heroInfo, setHeroInfo] = useState({});
     const [toggleEdit, setToggleEdit] = useState(false);
@@ -17,13 +18,8 @@ const DisplayHero = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const getHeroInfo = async () => {
-            const singleHero = await heroesAPI.getSingleHero(heroId);
-            if (singleHero.id)
-                setHeroInfo(singleHero);
-        }
-        getHeroInfo();
-    },[heroId]);
+        setHeroInfo(loadedHero);
+    }, [loadedHero]);
 
     const handleClose = () => {
         setHeroInfo({});
@@ -60,9 +56,9 @@ const DisplayHero = () => {
                     {toggleEdit &&
                         <FormModal handleToggleClicks={() => setToggleEdit(!toggleEdit)} heroes={heroes} setHeroes={setHeroes} currentHero={heroInfo} setCurrentHero={setHeroInfo} />
                     }
-                    <EditIcon onClick={() => setToggleEdit(!toggleEdit)} />
-                    <CloseIcon onClick={handleClose} />
-                    <DeleteForeverIcon onClick={handleDelete} />
+                    <EditIcon className='btns' onClick={() => setToggleEdit(!toggleEdit)} />
+                    <CloseIcon className='btns' onClick={handleClose} />
+                    <DeleteForeverIcon className='btns--delete' onClick={handleDelete} />
                 </div>
             </div>
         </div>

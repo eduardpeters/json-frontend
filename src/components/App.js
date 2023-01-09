@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
-import heroesAPI from '../services/heroesAPI';
+import { useState } from 'react';
+import { Outlet, useLoaderData } from 'react-router-dom';
 import Header from './Header';
 import HeroesList from './HeroesList';
 import HeroForm from './HeroForm';
@@ -8,16 +7,8 @@ import Footer from './Footer';
 import '../assets/App.css';
 
 const App = () => {
-    const [heroes, setHeroes] = useState([]);
-
-    useEffect(() => {
-        const getAllHeroes = async () => {
-            const allHeroes = await heroesAPI.getHeroes();
-            if (allHeroes.length)
-                setHeroes(allHeroes);
-        }
-        getAllHeroes();
-    }, []);
+    const loadedHeroes = useLoaderData();
+    const [heroes, setHeroes] = useState(loadedHeroes);
 
     return (
         <div className='App'>
