@@ -1,0 +1,9 @@
+.error-page {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    margin-top: 25vh;
+}
+
+.error-page__detail {
+    color: #808080;
+}
