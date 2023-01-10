@@ -8,24 +8,27 @@
     text-align: right;
     margin-right: 5px;
     font-size: small;
+    font-weight: bold;
     padding: 0.25rem;
 }
 
 .patch-input__input {
     text-align: center;
     border: 1px solid transparent;
-    background-color: #FFF;
+    background-color: #fdf0d5;
     color: #000;
     height: 1.5rem;
 }
 
 .patch-input__input--enabled {
-    border: 1px solid lightgrey;
+    background-color: #fbdea4;
+    border: 1px solid #d3d3d3;
 }
 
 .patch-input__btns > svg {
     cursor: pointer;
     color: #808080;
+    margin-right: 75%;
 }
 
 .patch-input__btns > svg:hover {
