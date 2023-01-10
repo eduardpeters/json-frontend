@@ -5,7 +5,12 @@ The Backend can be found [here](https://github.com/eduardpeters/json-backend).
 
 ## Usage
 
-Clone the repository and `cd` into its directory. Run `npm install` (if you don't have Node and NPM installed, you will want to do that beforehand) to have all dependencies installed. Aftewards running `npm start` will start the project.
+Clone the repository and `cd` into its directory. Run `npm install` (if you don't have Node and NPM installed, you will want to do that beforehand) to have all dependencies installed.
+
+The frontend requires a `.env` file with the following contents to pair with the backend project:
+- REACT_APP_BASE_URL="http://localhost:3001/"
+
+Aftewards running `npm start` will start the project.
 
 ## Background and functionalities
 
