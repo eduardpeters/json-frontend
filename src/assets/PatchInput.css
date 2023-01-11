@@ -15,13 +15,13 @@
 .patch-input__input {
     text-align: center;
     border: 1px solid transparent;
-    background-color: #fdf0d5;
+    background-color: #eaf4f4;
     color: #000;
     height: 1.5rem;
 }
 
 .patch-input__input--enabled {
-    background-color: #fbdea4;
+    background-color: #f6fff8;
     border: 1px solid #d3d3d3;
 }
 
