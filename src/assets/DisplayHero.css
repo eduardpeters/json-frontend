@@ -44,6 +44,18 @@
     margin-right: auto;
 }
 
+.hero-display__image {
+    border-radius: 25px;
+    mask-image: linear-gradient(45deg,#000 25%,#00000033 50%,#000 75%);
+    mask-size: 800%;
+    mask-position: 0;
+}
+
+.hero-display__image:hover {
+    transition: mask-position 3s ease;
+    mask-position: 120%;
+}
+
 .patch-input-container {
     grid-column: span 2;
 }

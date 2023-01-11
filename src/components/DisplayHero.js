@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useLoaderData,useOutletContext, useParams, useNavigate } from 'react-router-dom';
+import { useLoaderData,useOutletContext, useNavigate } from 'react-router-dom';
 import heroesAPI from '../services/heroesAPI';
 import PatchInput from './PatchInput';
 import FormModal from './FormModal';
@@ -14,7 +14,6 @@ const DisplayHero = () => {
     const [heroes, setHeroes] = useOutletContext();
     const [heroInfo, setHeroInfo] = useState({});
     const [toggleEdit, setToggleEdit] = useState(false);
-    const { heroId } = useParams();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -28,10 +27,9 @@ const DisplayHero = () => {
     }
 
     const handleDelete = async () => {
-        const response = await heroesAPI.deleteHero(heroId);
+        const response = await heroesAPI.deleteHero(heroInfo.id);
         if (response === 204) {
-            const numberId = parseInt(heroId);
-            setHeroes(heroes.filter(hero => hero.id !== numberId));
+            setHeroes(heroes.filter(hero => hero.id !== heroInfo.id));
             handleClose();
         }
         else {
@@ -46,11 +44,11 @@ const DisplayHero = () => {
                     <h4>{heroInfo.name}</h4>
                     <AccountCircleIcon className={`hero-icon ${heroInfo.publisher === 'Marvel Comics' ? 'hero-icon--marvel' : 'hero-icon--dc'}`} />
                 </div>
-                <img src={heroInfo.image} alt={`This is ${heroInfo.name}`}></img>
+                <img className='hero-display__image' src={heroInfo.image} alt={`This is ${heroInfo.name}`}></img>
                 <div className='patch-input-container'>
-                    <PatchInput key={`${heroId}-alter_ego`} fieldName='Alter Ego' propertyName='alter_ego' entry={heroInfo} setEntry={setHeroInfo} />
-                    <PatchInput key={`${heroId}-first_appearance`} fieldName='First Appearance' propertyName='first_appearance' entry={heroInfo} setEntry={setHeroInfo} />
-                    <PatchInput key={`${heroId}-characters`} fieldName='Characters' propertyName='characters' entry={heroInfo} setEntry={setHeroInfo} />
+                    <PatchInput key={`${heroInfo.id}-alter_ego`} fieldName='Alter Ego' propertyName='alter_ego' entry={heroInfo} setEntry={setHeroInfo} />
+                    <PatchInput key={`${heroInfo.id}-first_appearance`} fieldName='First Appearance' propertyName='first_appearance' entry={heroInfo} setEntry={setHeroInfo} />
+                    <PatchInput key={`${heroInfo.id}-characters`} fieldName='Characters' propertyName='characters' entry={heroInfo} setEntry={setHeroInfo} />
                 </div>
                 <div className='hero-display__btns'>
                     {toggleEdit &&
